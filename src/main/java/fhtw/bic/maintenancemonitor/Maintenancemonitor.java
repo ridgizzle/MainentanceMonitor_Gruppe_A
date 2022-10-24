@@ -4,8 +4,9 @@ public class Maintenancemonitor {
 
     public Maintenancemonitor(){};
 
-    public long add(int numberOne, int numberTwo){
-        return numberOne + numberTwo;
+    public String setMessage(String message){
+
+        return message;
     }
 
 }

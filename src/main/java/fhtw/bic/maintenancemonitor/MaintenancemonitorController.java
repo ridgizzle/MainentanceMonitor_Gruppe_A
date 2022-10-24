@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MaintenancemonitorController {
 
-    private Maintenancemonitor rechner = new Maintenancemonitor();
+    private Maintenancemonitor mm = new Maintenancemonitor();
 
-    @GetMapping("/api/message")
-    public long addNumbers(@RequestParam(name="numberOne") int numberOne, @RequestParam(name="numberTwo") int numberTwo){
-        return rechner.add(numberOne, numberTwo);
+    @GetMapping("/api/message/set")
+    public String setMessage(@RequestParam(name="m", required=false, defaultValue="Everything works as expected") String message){
+        return mm.setMessage(message);
     }
 }
