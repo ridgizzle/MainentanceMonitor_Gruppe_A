@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>fhtw.bic</groupId>
-    <artifactId>Summenrechner</artifactId>
+    <artifactId>Maintenancemonitor</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Summenrechner</name>
-    <description>Summenrechner</description>
+    <name>Maintenancemonitor</name>
+    <description>Maintenancemonitor</description>
     <properties>
         <java.version>19</java.version>
     </properties>
