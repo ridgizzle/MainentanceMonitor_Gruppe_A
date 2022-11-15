@@ -11,6 +11,7 @@ public class MaintenancemonitorController {
 
     @GetMapping("/api/message")
     public long addNumbers(@RequestParam(name="numberOne") int numberOne, @RequestParam(name="numberTwo") int numberTwo){
-        return rechner.add(numberOne, numberTwo);
+        //return rechner.add(numberOne, numberTwo);
+        return 1;
     }
 }

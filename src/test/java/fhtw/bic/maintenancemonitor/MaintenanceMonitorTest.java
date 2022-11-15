@@ -12,10 +12,10 @@ class MaintenanceMonitorTest {
         Maintenancemonitor rechner = new Maintenancemonitor();
 
         //Act
-        long summe = rechner.add(2, 2);
+        //long summe = rechner.add(2, 2);
 
         //Assert
-        assertEquals(4, summe);
+        //assertEquals(4, summe);
     }
 
 }

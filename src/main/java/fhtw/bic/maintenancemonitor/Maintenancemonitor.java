@@ -3,8 +3,10 @@ package fhtw.bic.maintenancemonitor;
 public class Maintenancemonitor {
 
     public Maintenancemonitor(){};
+    int numberOne;
 
-    public long add(int numberOne, int numberTwo){
+    int numberTwo;
+    public long add(int numberOTwo){
         return numberOne + numberTwo;
     }
 
