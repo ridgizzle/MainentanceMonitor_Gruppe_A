@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MaintenanceMonitorTest {
 
+    /*
     @Test
     public static void checkAdd(){
         //Arrange
@@ -17,5 +18,6 @@ class MaintenanceMonitorTest {
         //Assert
         //assertEquals(4, summe);
     }
+     */
 
 }
