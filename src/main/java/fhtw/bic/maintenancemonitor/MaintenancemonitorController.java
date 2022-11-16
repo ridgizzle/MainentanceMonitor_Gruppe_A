@@ -18,12 +18,16 @@ public class MaintenancemonitorController {
 
     @GetMapping("/api/message/reset")
     public String setMessage(){
-        return mm.setMessage("Everything works as expected");
+        return mm.setMessage("Everything works not expected");
     }
 
-    @GetMapping("/greeting")
-    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "greeting";
+    @GetMapping("/api/greeting")
+    public String maintenanceUntil(@RequestParam(name="time", required=false, defaultValue="00:00") String time,
+                                   @RequestParam(name="am_pm", required=false, defaultValue="am") String am_pm) {
+
+        return "Service checks: No power until " + time + am_pm;
     }
+
+
+
 }
