@@ -22,9 +22,7 @@
     <div class="center">
         <span id="monitorHeader" style="font-size:36px; font-weight: bold; font-family:'Calibri'">Maintenance Monitor</span>
         <br />
-        <span id="monitorStatus" style="font-size:24px; font-family:'Calibri'">[Status-Text]</span>
-        <p th:text="${mm.status}" />
-        <p th:text="${mm.statusDateTime}" />
+        <span id="monitorStatus" style="font-size:24px; font-family:'Calibri'">   <p th:text="'Hello, ' + ${mm.name} + '!'" /></span>
         <br />
         <br />
         <span id="monitorLastUpdate" style="font-size:12px; font-weight: bold; font-family:'Calibri'">last update: 1900-01-01</span>

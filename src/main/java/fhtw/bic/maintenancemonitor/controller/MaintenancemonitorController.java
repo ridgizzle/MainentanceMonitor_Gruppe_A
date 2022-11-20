@@ -8,56 +8,89 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.swing.text.View;
 import java.sql.Date;
 import java.time.LocalDateTime;
-
-@Controller
-//@RequestMapping(value = "/api/message")
+@RestController
 public class MaintenancemonitorController {
+    public static String message = "default message";
 
-    private Maintenancemonitor mm = new Maintenancemonitor();
-
-    @GetMapping("/api/message/set")
-    //@ResponseBody
-    public ModelAndView setMessage(@RequestParam(name="m", required=false, defaultValue="Everything works as expected") String message){
-
-        mm.setStatus(message);
-
-        ModelAndView mv = new ModelAndView();
-        mv.addObject(mm.getStatus(), mm);
-        mv.setViewName("/");
-        //mm.setStatus(message);
-        //return mm.setMessage(message);
-        return mv;
+    public String index(Model model) {
+        formHandler();
+        displayMessage();
+        return "form";
     }
 
-/*
-    @RequestMapping(value = "/api")
-    public String returnView(){
-        return "/";
+    /**
+     * Von dieser Funktion wird die HTML Seite zurückgegeben.
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "message")
+    public String displayMessage(){
+        String string = String.format("<span id=\"monitorStatus\" style=\"font-size:24px; font-family:'Calibri'\">  %s </span>\n", message);
+
+        String html = "<!DOCTYPE HTML>\n" +
+                "<html xmlns:th=\"http://www.thymeleaf.org\">\n" +
+                "<head>\n" +
+                "    <title>Maintenance Monitor</title>\n" +
+                "    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n" +
+                "    <style>\n" +
+                "\n" +
+                "        body{\n" +
+                "            background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(133,250,162,1) 50%, rgba(255,255,255,1) 100%);\n" +
+                "        }\n" +
+                "\n" +
+                "        .center{\n" +
+                "            position: absolute;\n" +
+                "            top: 50%;\n" +
+                "            width: 100%;\n" +
+                "            text-align: center;\n" +
+                "        }\n" +
+                "    </style>\n" +
+                "</head>\n" +
+                "<body>\n" +
+                "<div id=\"mainBox\">\n" +
+                "    <div class=\"center\">\n" +
+                "        <span id=\"monitorHeader\" style=\"font-size:36px; font-weight: bold; font-family:'Calibri'\">Maintenance Monitor</span>\n" +
+                "        <br />\n" +
+                string +
+                "        <br />\n" +
+                "        <br />\n" +
+                "        <span id=\"monitorLastUpdate\" style=\"font-size:12px; font-weight: bold; font-family:'Calibri'\">last update: 1900-01-01</span>\n" +
+                "    </div>\n" +
+                "</div>\n" +
+                "\n" +
+                "</body>\n" +
+                "</html>";
+        return html;
     }
-*/
 
-    @GetMapping("/api/message/reset")
-    //@ResponseBody
-    public String resetMessage(Model model){
-
-        LocalDateTime dateTime = LocalDateTime.now();
-
-        mm.setStatus("Everything works as expected");
-        mm.setStatusDate(dateTime);
-
-        model.addAttribute("mm", mm);
-        //model.addAttribute("statusDateTime", mm.getStatusDate());
-        //return mm.setMessage(message);
-        return "/";
-        //return mm.setStatus("Everything works as expected");
+    /**
+     * Diese Klasse erstellt das Formular mit dem die Daten der Hauptseite manipuliert werden können
+     * @return
+     */
+    @RequestMapping (method = RequestMethod.GET)
+    @ResponseBody
+    public String formHandler(){
+        String html = "<form method ='post'>" +                     //nach post kann um eine Url erweitert werden action='someURL' --> wie Weblink
+                "<input type='text' name='name' />" +               //name ist der Parametername der in postHandler initiert wird
+                "<input type='submit' value='Submit message' />" +
+                "</form>";                                                //closes form
+        return html;
     }
 
-    @GetMapping("/greeting")
-    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "greeting";
+    /**
+     * In der Methode formHandler() wird der Name in einer Textbox eingeben. In dieser Methode wird die Variable "name" in den String
+     * "message" gelegt. Der String message wird dann von der Funktion displayMessage() verwendet um die HTML-Seite entsprechend mit dem String zu versehen
+     * @param request
+     * @return
+     */
+    @RequestMapping (method = RequestMethod.POST)
+    @ResponseBody
+    public String postHandler(HttpServletRequest request){
+        message = request.getParameter("name");
+        return formHandler();
     }
 }
