@@ -1,20 +1,23 @@
-package fhtw.bic.maintenancemonitor.Model;
+package fhtw.bic.maintenancemonitor.model;
+
+import fhtw.bic.maintenancemonitor.service.MaintenancemonitorService;
 
 import java.time.LocalDateTime;
 
 public class Maintenancemonitor {
 
     private String status;
-    private LocalDateTime statusDateTime;
+    private String statusDateTime;
+    private boolean isErrorPage;
 
-    public Maintenancemonitor(){};
+    public Maintenancemonitor(){
+    };
 
-
-    public String setMessage(String message){
-
-        return message;
-    }
-
+    public Maintenancemonitor(String status, String statusDateTime){
+        this.status = status;
+        this.statusDateTime = statusDateTime;
+        this.isErrorPage = false;
+    };
 
     public String getStatus() {
         return status;
@@ -24,12 +27,19 @@ public class Maintenancemonitor {
         this.status = status;
     }
 
-    public LocalDateTime getStatusDate() {
+    public String getStatusDateTime() {
         return statusDateTime;
     }
 
-    public void setStatusDate(LocalDateTime statusDate) {
-        this.statusDateTime = statusDate;
+    public void setStatusDateTime(String statusDateTime) {
+        this.statusDateTime = statusDateTime;
     }
 
+    public boolean isErrorPage() {
+        return isErrorPage;
+    }
+
+    public void setErrorPage(boolean errorPage) {
+        isErrorPage = errorPage;
+    }
 }
