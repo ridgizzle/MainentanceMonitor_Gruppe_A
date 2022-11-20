@@ -1,12 +1,11 @@
-package fhtw.bic.maintenancemonitor.model;
+package fhtw.bic.maintenancemonitor.Model;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class Maintenancemonitor {
 
     private String status;
-    private LocalDateTime statusDate;
+    private LocalDateTime statusDateTime;
 
     public Maintenancemonitor(){};
 
@@ -26,11 +25,11 @@ public class Maintenancemonitor {
     }
 
     public LocalDateTime getStatusDate() {
-        return statusDate;
+        return statusDateTime;
     }
 
     public void setStatusDate(LocalDateTime statusDate) {
-        this.statusDate = statusDate;
+        this.statusDateTime = statusDate;
     }
 
 }

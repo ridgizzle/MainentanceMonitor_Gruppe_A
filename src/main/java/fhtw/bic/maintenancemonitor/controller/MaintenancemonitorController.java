@@ -1,25 +1,26 @@
-package fhtw.bic.maintenancemonitor.controller;
+package fhtw.bic.maintenancemonitor.Controller;
 
-import fhtw.bic.maintenancemonitor.model.Maintenancemonitor;
+import fhtw.bic.maintenancemonitor.Model.Maintenancemonitor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.swing.text.View;
-import java.sql.Date;
 import java.time.LocalDateTime;
 
 @Controller
-//@RequestMapping(value = "/api/message")
+@RequestMapping(value = "/api")
 public class MaintenancemonitorController {
 
     private Maintenancemonitor mm = new Maintenancemonitor();
 
-    @GetMapping("/api/message/set")
-    //@ResponseBody
+    @GetMapping("/")
+    public String getIndex(){
+        return "index.html";
+    }
+
+    @GetMapping("/message/set")
     public String setMessage(@RequestParam(name="m", required=false, defaultValue="Everything works as expected") String message, Model model){
 
         LocalDateTime dateTime = LocalDateTime.now();
@@ -28,19 +29,12 @@ public class MaintenancemonitorController {
 
         model.addAttribute("mm", mm);
         model.addAttribute("title", "Test-Title");
-        //mm.setStatus(message);
-        //return mm.setMessage(message);
-        return "index";
-    }
-
-    @GetMapping("/")
-    public String index(Model model) {
 
         return "index";
     }
 
-    @GetMapping("/api/message/reset")
-    //@ResponseBody
+
+    @GetMapping("/message/reset")
     public String resetMessage(Model model){
 
         LocalDateTime dateTime = LocalDateTime.now();
@@ -50,13 +44,11 @@ public class MaintenancemonitorController {
 
         model.addAttribute("mm", mm);
         model.addAttribute("title", "Test-Title");
-        //model.addAttribute("statusDateTime", mm.getStatusDate());
-        //return mm.setMessage(message);
+
         return "index";
-        //return mm.setStatus("Everything works as expected");
     }
 
-    @GetMapping("/api/greeting")
+    @GetMapping("/greeting")
     public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
         model.addAttribute("name", name);
         return "api/greeting";
