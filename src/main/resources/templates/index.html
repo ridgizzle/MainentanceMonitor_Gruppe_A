@@ -1,12 +1,16 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="${title}">Title</title>
+    <title>Maintenance Monitor - v1.0</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <style>
 
-        body{
+        .bodyOk{
             background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(133,250,162,1) 50%, rgba(255,255,255,1) 100%);
+        }
+
+        .bodyError{
+            background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(252,72,72,1) 50%, rgba(255,255,255,1) 100%);
         }
 
         .center{
@@ -15,20 +19,36 @@
             width: 100%;
             text-align: center;
         }
+
+        #monitorHeader{
+            font-size:36px;
+            font-weight: bold;
+            font-family:'Calibri';
+        }
+
+        #monitorStatus{
+            font-size:24px;
+            font-family:'Calibri';
+        }
+
+        #monitorLastUpdate{
+            font-size:12px;
+            font-weight: bold;
+            font-family:'Calibri';
+        }
     </style>
 </head>
-<body>
+<body th:class="${mm.isErrorPage} ? bodyError : bodyOk">
 <div id="mainBox">
     <div class="center">
-        <span id="monitorHeader" style="font-size:36px; font-weight: bold; font-family:'Calibri'">Maintenance Monitor</span>
-        <br />
-        <span id="monitorStatus" style="font-size:24px; font-family:'Calibri'">[Status-Text]</span>
-        <p th:text="${mm.getStatus}"> </p>
-        <p th:text="${mm.getStatusDate()}" />
-        <p th:text="${mm}" />
+        <span id="monitorHeader">Maintenance Monitor</span>
         <br />
         <br />
-        <span id="monitorLastUpdate" style="font-size:12px; font-weight: bold; font-family:'Calibri'">last update: 1900-01-01</span>
+        <span id="monitorStatus" th:text="${mm.getStatus}">[Status-Text]</span>
+        <br />
+        <br />
+        <br />
+        <p id="monitorLastUpdate"  />last update: <span th:text="${mm.getStatusDateTime()}">1900-01-01</span>
     </div>
 </div>
 
