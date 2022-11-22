@@ -1,6 +1,6 @@
-package fhtw.bic.maintenancemonitor.Controller;
+package fhtw.bic.maintenancemonitor.controller;
 
-import fhtw.bic.maintenancemonitor.Model.Maintenancemonitor;
+import fhtw.bic.maintenancemonitor.model.Maintenancemonitor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +21,7 @@ public class MaintenancemonitorController {
     }
 
     @GetMapping("/message/set")
-    public String setMessage(@RequestParam(name="m", required=false, defaultValue="Everything works as expected") String message, Model model){
+    public String setMessage(@RequestParam(name="m", required=false, defaultValue="Everything works as expectedy") String message, Model model){
 
         LocalDateTime dateTime = LocalDateTime.now();
         mm.setStatus(message);

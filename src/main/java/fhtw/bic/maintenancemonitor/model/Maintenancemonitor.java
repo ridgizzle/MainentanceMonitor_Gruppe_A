@@ -1,4 +1,4 @@
-package fhtw.bic.maintenancemonitor.Model;
+package fhtw.bic.maintenancemonitor.model;
 
 import java.time.LocalDateTime;
 
@@ -7,7 +7,7 @@ public class Maintenancemonitor {
     private String status;
     private LocalDateTime statusDateTime;
 
-    public Maintenancemonitor(){};
+    public Maintenancemonitor(){}
 
 
     public String setMessage(String message){
