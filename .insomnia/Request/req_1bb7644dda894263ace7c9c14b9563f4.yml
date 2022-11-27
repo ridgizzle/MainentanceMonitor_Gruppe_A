@@ -1,0 +1,39 @@
+_id: req_1bb7644dda894263ace7c9c14b9563f4
+type: Request
+parentId: wrk_27d1f32faa1f408493088f815353f8ac
+modified: 1669551989892
+created: 1666636116956
+url: 127.0.0.1:8080/api/message/set
+name: Set Message
+description: >-
+  Mit dieser Funktion kann man Nachrichten setzen. Sollte eine Nachricht gesetzt
+  werden, ändert sich dementsprechend das Design der Webseite.
+
+
+  Eingabe erfolgt unter Reiter "Query" in der Messagebox "m"
+
+
+  Beispiel: m = "Maintenance Work until 5:00am"
+method: GET
+body: {}
+parameters:
+  - id: pair_299b64479e374eb5b831bb8f4730a47b
+    name: m
+    value: Maintenance Work until 05:00am
+    description: ""
+  - id: pair_9a3c84620ffb422890fe193676e1894b
+    name: ""
+    value: ""
+    description: ""
+    type: text
+    multiline: false
+headers: []
+authentication: {}
+metaSortKey: -1666636116956
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

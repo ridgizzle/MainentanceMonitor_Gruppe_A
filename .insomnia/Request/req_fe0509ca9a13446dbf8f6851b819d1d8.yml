@@ -1,0 +1,22 @@
+_id: req_fe0509ca9a13446dbf8f6851b819d1d8
+type: Request
+parentId: wrk_27d1f32faa1f408493088f815353f8ac
+modified: 1669551903258
+created: 1666636167155
+url: http://127.0.0.1:8080/api/message
+name: Check Status
+description: Diese Funktion überprüft lediglich den Status der Webseite. Sollte
+  eine Nachricht gesetzt sein, ändert sich auch dementsprechend die Webseite.
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1666636167155
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

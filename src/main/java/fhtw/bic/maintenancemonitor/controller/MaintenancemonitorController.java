@@ -5,7 +5,6 @@ import fhtw.bic.maintenancemonitor.service.MaintenancemonitorService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -13,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 //@RequestMapping(value = "/api")
 public class MaintenancemonitorController {
 
-    private static MaintenancemonitorService mms = new MaintenancemonitorService();
-    private static Maintenancemonitor mm = new Maintenancemonitor(mms.getDefaultStatus(), mms.dateTimeNowString());
+    private static final MaintenancemonitorService mms = new MaintenancemonitorService();
+    private static final Maintenancemonitor mm = new Maintenancemonitor(mms.getDefaultStatus(), mms.dateTimeNowString());
 
     /**
      * @param model model for body of the website
@@ -27,8 +26,10 @@ public class MaintenancemonitorController {
     }
 
     /**
-     * @param model model for body of the website
-     * @return
+     * Mit dieser Funktion kann der Status generell abgefragt werden.
+     *
+     * @param model Webseitenvorlage die verändert wird
+     * @return Website
      */
     @GetMapping("/api/message")
     public String messageIndex(Model model){
@@ -37,11 +38,15 @@ public class MaintenancemonitorController {
         return "index";
     }
 
-
     /**
-     * @param message message to display on the website (MaintenanceMonitor)
-     * @param model model for body of the website
-     * @return
+     * Mit dieser Funktion kann ein Status auf der Webseite gesetzt werden.
+     * Die Standardnachricht lautet "Works as expected" welche immer angezeigt wird sofern kein Status gesetzt ist.
+     * Wird ein Status gesetzt, wird die Webseite entsprechend angepasst. Sie wird rot und die Statusnachricht wird ergänzt.
+     * Es ist jedoch auch möglich die Webseite mit der entsprechend gesetzten Nachricht zu setzen, wenn man lediglich localhost:8080 aufruft
+     *
+     * @param message Nachricht die eingegeben wird (Bspw. "Maintenance Work until 05:00am)
+     * @param model Webseitenvorlage die verändert wird
+     * @return Website
      */
     @GetMapping("/api/message/set")
     public String setMessage(@RequestParam(name="m", required=false, defaultValue=MaintenancemonitorService.defaultStatus) String message, Model model){
@@ -49,10 +54,7 @@ public class MaintenancemonitorController {
         mm.setStatus(message);
         mm.setStatusDateTime(mms.dateTimeNowString());
 
-        if(!message.equals(mms.getDefaultStatus()))
-            mm.setErrorPage(true);
-        else
-            mm.setErrorPage(false);
+        mm.setErrorPage(!message.equals(mms.getDefaultStatus()));
 
         model.addAttribute("mm", mm);
         //model.addAttribute("title", "Test-Title");
@@ -62,13 +64,15 @@ public class MaintenancemonitorController {
 
 
     /**
-     * @param model model for body of the website
-     * @return
+     * Mit dieser Funktion kann die Statusnachricht wieder auf den Standard zurückgesetzt werden.
+     * Der Service-Mitarbeiter gibt den Kunden hiermit bekannt, dass alles wieder funktioniert.
+     * @param model Webseitenvorlage die verändert wird
+     * @return Website
      */
     @GetMapping("/api/message/reset")
     public String resetMessage(Model model){
 
-        mm.setStatus(mms.defaultStatus);
+        mm.setStatus(mms.getDefaultStatus());
         mm.setStatusDateTime(mms.dateTimeNowString());
         mm.setErrorPage(false);
 
