@@ -14,9 +14,16 @@ import java.net.http.HttpResponse;
 import static org.assertj.core.api.Assertions.*;
 
 
+/**
+ * Test class for testing the maintenqanceMonitor Application
+ */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
     public class CheckHTTPResponse {
 
+    /**
+     * tests if setting a status message works as expected
+     * @throws Exception
+     */
         @Test
         public void shouldPassIfStringMatchesNoPower() throws Exception {
             HttpRequest request = HttpRequest.newBuilder()
@@ -30,6 +37,10 @@ import static org.assertj.core.api.Assertions.*;
 
         }
 
+    /**
+     * Tests if resetting the status message works as expected
+     * @throws Exception
+     */
         @Test
         public void shouldPassIfStringMatchesDefault() throws Exception {
             HttpRequest request = HttpRequest.newBuilder()
@@ -43,6 +54,11 @@ import static org.assertj.core.api.Assertions.*;
 
         }
 
+    /**
+     * Tests if Webiste changes the color of the body accordingly
+     *
+     * @throws Exception
+     */
     @Test
     public void shouldPassIfColorGreen() throws Exception {
         HttpRequest request = HttpRequest.newBuilder()
@@ -57,6 +73,11 @@ import static org.assertj.core.api.Assertions.*;
 
     }
 
+    /**
+     * Testception - Negative test to test the test
+     *
+     * @throws Exception
+     */
         @Test
         public void shouldNotPassIfStringDoesNotMatchDefault() throws Exception {
             HttpRequest request = HttpRequest.newBuilder()
@@ -70,6 +91,11 @@ import static org.assertj.core.api.Assertions.*;
 
         }
 
+    /**
+     * Tests if body returns the current date and time, which should be the last status change
+     *
+     * @throws Exception
+     */
         @Test
         public void shouldPassIfDateMatchesNow() throws Exception {
             HttpRequest request = HttpRequest.newBuilder()
@@ -85,7 +111,11 @@ import static org.assertj.core.api.Assertions.*;
         }
 
 
-
+    /**
+     * Testing the status message to be something different from specified
+     *
+     * @throws Exception
+     */
         @Test
         public void shouldPassIfStringMatchesRandomValue() throws Exception {
             HttpRequest request = HttpRequest.newBuilder()
@@ -99,6 +129,11 @@ import static org.assertj.core.api.Assertions.*;
 
         }
 
+    /**
+     * Tests if Webiste changes the color of the body accordingly
+     *
+     * @throws Exception
+     */
         @Test
         public void shouldPassIfColorRed() throws Exception {
             HttpRequest request = HttpRequest.newBuilder()
@@ -113,6 +148,12 @@ import static org.assertj.core.api.Assertions.*;
 
         }
 
+    /**
+     *
+     * Tests a wrong API call - should return 404
+     *
+     * @throws Exception
+     */
         @Test
         public void shouldPassIfAPIwrong() throws Exception {
             HttpRequest request = HttpRequest.newBuilder()
