@@ -16,12 +16,20 @@ public class MaintenancemonitorController {
     private static MaintenancemonitorService mms = new MaintenancemonitorService();
     private static Maintenancemonitor mm = new Maintenancemonitor(mms.getDefaultStatus(), mms.dateTimeNowString());
 
+    /**
+     * @param model model for body of the website
+     * @return index
+     */
     @GetMapping("/")
     public String getIndex(Model model){
         model.addAttribute("mm", mm);
         return "index";
     }
 
+    /**
+     * @param model model for body of the website
+     * @return
+     */
     @GetMapping("/api/message")
     public String messageIndex(Model model){
 
@@ -30,6 +38,11 @@ public class MaintenancemonitorController {
     }
 
 
+    /**
+     * @param message message to display on the website (MaintenanceMonitor)
+     * @param model model for body of the website
+     * @return
+     */
     @GetMapping("/api/message/set")
     public String setMessage(@RequestParam(name="m", required=false, defaultValue=MaintenancemonitorService.defaultStatus) String message, Model model){
 
@@ -48,6 +61,10 @@ public class MaintenancemonitorController {
     }
 
 
+    /**
+     * @param model model for body of the website
+     * @return
+     */
     @GetMapping("/api/message/reset")
     public String resetMessage(Model model){
 
