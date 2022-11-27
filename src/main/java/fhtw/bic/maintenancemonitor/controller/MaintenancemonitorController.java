@@ -5,7 +5,6 @@ import fhtw.bic.maintenancemonitor.service.MaintenancemonitorService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -13,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 //@RequestMapping(value = "/api")
 public class MaintenancemonitorController {
 
-    private static MaintenancemonitorService mms = new MaintenancemonitorService();
-    private static Maintenancemonitor mm = new Maintenancemonitor(mms.getDefaultStatus(), mms.dateTimeNowString());
+    private static final MaintenancemonitorService mms = new MaintenancemonitorService();
+    private static final Maintenancemonitor mm = new Maintenancemonitor(mms.getDefaultStatus(), mms.dateTimeNowString());
 
     /**
      * @param model model for body of the website
@@ -43,7 +42,6 @@ public class MaintenancemonitorController {
      * Mit dieser Funktion kann ein Status auf der Webseite gesetzt werden.
      * Die Standardnachricht lautet "Works as expected" welche immer angezeigt wird sofern kein Status gesetzt ist.
      * Wird ein Status gesetzt, wird die Webseite entsprechend angepasst. Sie wird rot und die Statusnachricht wird ergänzt.
-     *
      * Es ist jedoch auch möglich die Webseite mit der entsprechend gesetzten Nachricht zu setzen, wenn man lediglich localhost:8080 aufruft
      *
      * @param message Nachricht die eingegeben wird (Bspw. "Maintenance Work until 05:00am)
@@ -56,10 +54,7 @@ public class MaintenancemonitorController {
         mm.setStatus(message);
         mm.setStatusDateTime(mms.dateTimeNowString());
 
-        if(!message.equals(mms.getDefaultStatus()))
-            mm.setErrorPage(true);
-        else
-            mm.setErrorPage(false);
+        mm.setErrorPage(!message.equals(mms.getDefaultStatus()));
 
         model.addAttribute("mm", mm);
         //model.addAttribute("title", "Test-Title");
@@ -77,7 +72,7 @@ public class MaintenancemonitorController {
     @GetMapping("/api/message/reset")
     public String resetMessage(Model model){
 
-        mm.setStatus(mms.defaultStatus);
+        mm.setStatus(mms.getDefaultStatus());
         mm.setStatusDateTime(mms.dateTimeNowString());
         mm.setErrorPage(false);
 

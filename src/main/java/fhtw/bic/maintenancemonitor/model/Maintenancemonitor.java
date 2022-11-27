@@ -1,9 +1,5 @@
 package fhtw.bic.maintenancemonitor.model;
 
-import fhtw.bic.maintenancemonitor.service.MaintenancemonitorService;
-
-import java.time.LocalDateTime;
-
 /**
  * Model for the body of the website - is used to set the status, date of last status change and error indicator
  */
@@ -14,7 +10,7 @@ public class Maintenancemonitor {
     private boolean isErrorPage;
 
     public Maintenancemonitor(){
-    };
+    }
 
     /**
      * @param status status of the maintenance
@@ -24,7 +20,7 @@ public class Maintenancemonitor {
         this.status = status;
         this.statusDateTime = statusDateTime;
         this.isErrorPage = false;
-    };
+    }
 
     /**
      * @return status

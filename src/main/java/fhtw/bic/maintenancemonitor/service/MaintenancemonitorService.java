@@ -28,6 +28,6 @@ public class MaintenancemonitorService {
      * @return returns default status message
      */
     public String getDefaultStatus(){
-        return this.defaultStatus;
+        return defaultStatus;
     }
 }
