@@ -1,0 +1,12 @@
+//Nur für Testzwecke
+
+GET http://localhost:8080/api/message/reset
+
+> {%
+ // Man könnte JS Code einfügen
+ // Cleint - Unit Tests, Assertions, Logging .....
+ // response - Details, Body, Status, Headers
+ client.test("Status Check", function (){
+     client.assert(response.status == 200, "Status should be 200")
+ });
+ %}
