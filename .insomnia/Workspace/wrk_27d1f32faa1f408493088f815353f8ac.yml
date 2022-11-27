@@ -1,0 +1,9 @@
+_id: wrk_27d1f32faa1f408493088f815353f8ac
+type: Workspace
+parentId: null
+modified: 1669552164195
+created: 1665420194866
+name: summenrechner
+description: Dies dient zum Testen der API. Es kann der Status abgefragt,
+  Nachrichten gesetzt und auf den Ursprungszustand gesetzt werden.
+scope: design

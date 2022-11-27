@@ -27,8 +27,10 @@ public class MaintenancemonitorController {
     }
 
     /**
-     * @param model model for body of the website
-     * @return
+     * Mit dieser Funktion kann der Status generell abgefragt werden.
+     *
+     * @param model Webseitenvorlage die verändert wird
+     * @return Website
      */
     @GetMapping("/api/message")
     public String messageIndex(Model model){
@@ -37,11 +39,16 @@ public class MaintenancemonitorController {
         return "index";
     }
 
-
     /**
-     * @param message message to display on the website (MaintenanceMonitor)
-     * @param model model for body of the website
-     * @return
+     * Mit dieser Funktion kann ein Status auf der Webseite gesetzt werden.
+     * Die Standardnachricht lautet "Works as expected" welche immer angezeigt wird sofern kein Status gesetzt ist.
+     * Wird ein Status gesetzt, wird die Webseite entsprechend angepasst. Sie wird rot und die Statusnachricht wird ergänzt.
+     *
+     * Es ist jedoch auch möglich die Webseite mit der entsprechend gesetzten Nachricht zu setzen, wenn man lediglich localhost:8080 aufruft
+     *
+     * @param message Nachricht die eingegeben wird (Bspw. "Maintenance Work until 05:00am)
+     * @param model Webseitenvorlage die verändert wird
+     * @return Website
      */
     @GetMapping("/api/message/set")
     public String setMessage(@RequestParam(name="m", required=false, defaultValue=MaintenancemonitorService.defaultStatus) String message, Model model){
@@ -62,8 +69,10 @@ public class MaintenancemonitorController {
 
 
     /**
-     * @param model model for body of the website
-     * @return
+     * Mit dieser Funktion kann die Statusnachricht wieder auf den Standard zurückgesetzt werden.
+     * Der Service-Mitarbeiter gibt den Kunden hiermit bekannt, dass alles wieder funktioniert.
+     * @param model Webseitenvorlage die verändert wird
+     * @return Website
      */
     @GetMapping("/api/message/reset")
     public String resetMessage(Model model){

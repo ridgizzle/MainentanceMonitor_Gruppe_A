@@ -1,0 +1,28 @@
+_id: req_775868d4e04a478a8cdc144580784de8
+type: Request
+parentId: wrk_27d1f32faa1f408493088f815353f8ac
+modified: 1669552030183
+created: 1665423173186
+url: 127.0.0.1:8080/api/message/reset
+name: Reset to normal
+description: |-
+  Diese Funktion reseted die Seite wieder auf den Ursprungszustand.
+
+  Die Nachricht die angezeigt werden muss lautet "Everything works as expected"
+method: GET
+body: {}
+parameters:
+  - id: pair_58ebf32c34d345a1b4d69893ca2e73a6
+    name: ""
+    value: ""
+    description: ""
+headers: []
+authentication: {}
+metaSortKey: -1665423173186
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
