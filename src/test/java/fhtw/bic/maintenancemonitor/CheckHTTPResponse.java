@@ -3,6 +3,8 @@ package fhtw.bic.maintenancemonitor;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -41,6 +43,20 @@ import static org.assertj.core.api.Assertions.*;
 
         }
 
+    @Test
+    public void shouldPassIfColorGreen() throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(new URI("http://localhost:8080/api/message/reset"))
+                .GET()
+                .build();
+        HttpResponse<String> response =  HttpClient.newHttpClient()
+                .send(request, HttpResponse.BodyHandlers.ofString());
+
+        assertThat(response.body()).contains("body class=\"bodyOk\"");
+
+
+    }
+
         @Test
         public void shouldNotPassIfStringDoesNotMatchDefault() throws Exception {
             HttpRequest request = HttpRequest.newBuilder()
@@ -51,6 +67,20 @@ import static org.assertj.core.api.Assertions.*;
                     .send(request, HttpResponse.BodyHandlers.ofString());
 
             assertThat(response.body()).doesNotContain("Everything does not work as expected");
+
+        }
+
+        @Test
+        public void shouldPassIfDateMatchesNow() throws Exception {
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(new URI("http://localhost:8080/api/message/reset"))
+                    .GET()
+                    .build();
+            HttpResponse<String> response =  HttpClient.newHttpClient()
+                    .send(request, HttpResponse.BodyHandlers.ofString());
+
+            assertThat(response.body()).contains("last update: <span>" + LocalDateTime.now()
+                    .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 
         }
 
@@ -69,18 +99,33 @@ import static org.assertj.core.api.Assertions.*;
 
         }
 
-    @Test
-    public void shouldPassIfAPIwrong() throws Exception {
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI("http://localhost:8080/api/message/se"))
-                .GET()
-                .build();
-        HttpResponse<String> response =  HttpClient.newHttpClient()
-                .send(request, HttpResponse.BodyHandlers.ofString());
+        @Test
+        public void shouldPassIfColorRed() throws Exception {
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(new URI("http://localhost:8080/api/message/set?m=Service+checks"))
+                    .GET()
+                    .build();
+            HttpResponse<String> response =  HttpClient.newHttpClient()
+                    .send(request, HttpResponse.BodyHandlers.ofString());
 
-        assertThat(response.statusCode()).isEqualTo(404);
+            assertThat(response.body()).contains("body class=\"bodyError\"");
 
-    }
+
+        }
+
+        @Test
+        public void shouldPassIfAPIwrong() throws Exception {
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(new URI("http://localhost:8080/api/message/se"))
+                    .GET()
+                    .build();
+            HttpResponse<String> response =  HttpClient.newHttpClient()
+                    .send(request, HttpResponse.BodyHandlers.ofString());
+
+            assertThat(response.statusCode()).isEqualTo(404);
+
+        }
+
 
     }
 
