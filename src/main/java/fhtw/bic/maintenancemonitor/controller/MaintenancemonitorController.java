@@ -16,6 +16,10 @@ public class MaintenancemonitorController {
     private static MaintenancemonitorService mms = new MaintenancemonitorService();
     private static Maintenancemonitor mm = new Maintenancemonitor(mms.getDefaultStatus(), mms.dateTimeNowString());
 
+    /**
+     * @param model model for body of the website
+     * @return index
+     */
     @GetMapping("/")
     public String getIndex(Model model){
         model.addAttribute("mm", mm);
