@@ -6,9 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MaintenancemonitorApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(MaintenancemonitorApplication.class, args);
-        //System.out.println("lol");
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(MaintenancemonitorApplication.class, args);
+	}
 
 }
