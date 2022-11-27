@@ -39,6 +39,9 @@ public class MaintenancemonitorController {
      * Mit dieser Funktion kann ein Status auf der Webseite gesetzt werden.
      * Die Standardnachricht lautet "Works as expected" welche immer angezeigt wird sofern kein Status gesetzt ist.
      * Wird ein Status gesetzt, wird die Webseite entsprechend angepasst. Sie wird rot und die Statusnachricht wird ergänzt.
+     *
+     * Es ist jedoch auch möglich die Webseite mit der entsprechend gesetzten Nachricht zu setzen, wenn man lediglich localhost:8080 aufruft
+     *
      * @param message Nachricht die eingegeben wird (Bspw. "Maintenance Work until 05:00am)
      * @param model Webseitenvorlage die verändert wird
      * @return Website
