@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.*;
 /**
  * Test class for testing the maintenqanceMonitor Application
  */
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
     public class TestHTTPResponse {
 
     /**
