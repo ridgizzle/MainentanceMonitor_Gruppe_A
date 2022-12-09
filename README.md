@@ -1,4 +1,11 @@
 # MainenanceMonitor Gruppe A2
+
+# Gruppenmitglieder
+Danijel Beric
+Melchior Lebesmühlbacher
+Daniel Stangl
+Rhoideridge Heinz
+
 # Beschreibung des Programms
 Der Maintenance Monitor ist eine einfache Browser App zum Aufrufen eines einfachen Eingabe-Ausgabe-Programms für Text. Es basiert auf dem Spring-Boot Framework welches den Tomcat Server mit dem Port 8080 nutzt.
 Ziel dieses Programmes ist eine Simulation eines Energieanbieters um seine Endverbraucher über etwaige Wartungsarbeiten zu informieren.
