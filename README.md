@@ -1,9 +1,9 @@
 # MainenanceMonitor Gruppe A2
 
 # Gruppenmitglieder
-Danijel Beric
-Melchior Lebesmühlbacher
-Daniel Stangl
+Danijel Beric,
+Melchior Lebesmühlbacher,
+Daniel Stangl,
 Rhoideridge Heinz
 
 # Beschreibung des Programms
